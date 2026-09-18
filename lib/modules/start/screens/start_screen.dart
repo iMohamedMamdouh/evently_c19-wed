@@ -1,6 +1,8 @@
 import 'package:evently_c19/core/app_provider/app_provider.dart';
 import 'package:evently_c19/core/theme/app_colors.dart';
+import 'package:evently_c19/core/utils/app_assets.dart';
 import 'package:evently_c19/core/widgets/custom_btn.dart';
+import 'package:evently_c19/modules/start/screens/second_screen.dart';
 import 'package:evently_c19/modules/start/widgets/selection_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,13 +24,13 @@ class StartScreen extends StatelessWidget {
               Center(
                 child: Hero(
                   tag: "logo",
-                  child: Image.asset("assets/logo/app_logo.png", width: 140),
+                  child: Image.asset(AppAssets.appLogo, width: 140),
                 ),
               ),
               SizedBox(height: 24),
               Center(
                 child: Image.asset(
-                  "assets/images/start_image.png",
+                  AppAssets.startImage,
                   width: 340,
                   color: theme.primaryColorLight,
                 ),
@@ -81,7 +83,7 @@ class StartScreen extends StatelessWidget {
                   ),
 
                   SelectionItem(
-                    icon: "assets/icons/icn_light.png",
+                    icon: AppAssets.lightIcon,
                     isSelected: provider.themeMode == ThemeMode.light,
                     onTap: () {
                       provider.changeTheme(ThemeMode.light);
@@ -89,18 +91,27 @@ class StartScreen extends StatelessWidget {
                   ),
                   SizedBox(width: 8),
                   SelectionItem(
-                    icon: "assets/icons/icn_dark.png",
+                    icon: AppAssets.darkIcon,
                     isSelected: provider.themeMode == ThemeMode.dark,
-                  onTap: () {
-                    provider.changeTheme(ThemeMode.dark);
-
-                  },
+                    onTap: () {
+                      provider.changeTheme(ThemeMode.dark);
+                    },
                   ),
                 ],
               ),
               Spacer(),
               Center(
-                child: CustomBtn(text: "Let’s start", onTap: () {}),
+                child: CustomBtn(
+                  text: "Let’s start",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SecondScreen(),
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
           ),

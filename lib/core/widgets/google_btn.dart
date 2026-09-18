@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
+import '../utils/app_assets.dart';
 
-class CustomBtn extends StatelessWidget {
+class GoogleBtn extends StatelessWidget {
   String text;
   void Function()? onTap;
   bool isLoading;
-  CustomBtn({
+
+  GoogleBtn({
     super.key,
     required this.text,
     required this.onTap,
@@ -16,15 +18,15 @@ class CustomBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: isLoading ? null : onTap,
       borderRadius: BorderRadius.circular(16),
-      child: AnimatedContainer(
-        width: isLoading ? 130 : 400,
+      child: Container(
+        width: 343,
         height: 56,
-        duration: Duration(milliseconds: 500),
         padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: AppColors.lightPrimaryColor,
+          color: Colors.white,
+          border: Border.all(color: AppColors.grayColor, width: 0.5),
           borderRadius: BorderRadius.circular(16),
         ),
         child: isLoading
@@ -33,20 +35,25 @@ class CustomBtn extends StatelessWidget {
                   height: 24,
                   width: 24,
                   child: CircularProgressIndicator(
-                    color: Colors.white,
+                    color: AppColors.lightPrimaryColor,
                     strokeWidth: 1,
                   ),
                 ),
               )
-            : Center(
-                child: Text(
-                  text,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(AppAssets.googleIcon, width: 24),
+                  SizedBox(width: 8),
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: AppColors.lightPrimaryColor,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
-                ),
+                ],
               ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:evently_c19/core/utils/app_assets.dart';
 import 'package:evently_c19/modules/start/screens/start_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class SplashScreen extends StatelessWidget {
                 child: Center(
                   child: Hero(
                       tag: "logo",
-                      child: Image.asset("assets/logo/app_logo.png", width: 309)),
+                      child: Image.asset(AppAssets.appLogo, width: 309)),
                 ),
               ),
             ),
@@ -35,7 +36,7 @@ class SplashScreen extends StatelessWidget {
                 },);
               },
                 delay: Duration(seconds: 2),
-                child: Image.asset("assets/logo/route_logo.png", width: 214)),
+                child: Image.asset(AppAssets.routeLogo, width: 214)),
           ],
         ),
       ),

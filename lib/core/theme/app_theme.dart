@@ -7,6 +7,7 @@ class AppTheme{
     scaffoldBackgroundColor: AppColors.lightBgColor,
     primaryColor: AppColors.lightPrimaryColor,
     primaryColorLight: AppColors.lightPrimaryColor,
+    cardColor: Colors.white,
     textTheme: TextTheme(
       titleMedium: TextStyle(
         fontSize: 20,
@@ -16,9 +17,11 @@ class AppTheme{
     ),
   );
   static ThemeData dark = ThemeData(
+    brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.darkBgColor,
     primaryColor: AppColors.darkPrimaryColor,
     primaryColorLight: AppColors.darkTextColor,
+    cardColor: AppColors.darkCardColor,
     textTheme: TextTheme(
       titleMedium: TextStyle(
         fontSize: 20,
